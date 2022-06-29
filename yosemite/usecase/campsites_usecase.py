@@ -1,11 +1,13 @@
 from yosemite.repository import yosemite_api, telegram
 from yosemite.mappers import camping_mapper
+import os
+import json
 
-camping_ids = [232449, 232450, 10004152]
+CAMPSITE_IDS = json.loads(os.environ.get('CAMPSITE_IDS', []))
 
 def get_all_availabilities():
     response = []
-    for id in camping_ids:
+    for id in CAMPSITE_IDS:
         response += [get_availabilities(id)]
     return response
 
@@ -32,7 +34,7 @@ def get_availabilities(campground_id):
 def _format_telegram_message(campings, id):
     if len(campings) == 0: return "There is no availability for camping %s for July!" % id
     
-    text = "⭐ *Available Campings* ⭐\n\n"
+    text = "⭐ *Available campsites for %s * ⭐\n\n" %  id
     for c in campings:
         text += "%s *site:* %s - *%s*\n" % (c['date'], c['site'], c['campsite_type'])
     return text
