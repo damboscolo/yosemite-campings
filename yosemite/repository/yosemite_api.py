@@ -5,8 +5,8 @@ import os
 
 ENV = os.environ.get('ENV')
 
-def get_campings(campground_id):
-    if ENV != "prod": return _mock_get_campings()
+def get_availabilities(campground_id):
+    if ENV != "prod": return _mock_get_availabilities()
     
     url = "https://www.recreation.gov/api/camps/availability/campground/{0}/month?start_date=2022-07-01T00%3A00%3A00.000Z".format(campground_id)
     headers = {
@@ -18,7 +18,7 @@ def get_campings(campground_id):
     return requests.get(url, headers=headers).json()
     
     
-def _mock_get_campings():
+def _mock_get_availabilities():
     f = open("yosemite/repository/availabilities_mock.json")
     data = json.load(f)
     f.close()

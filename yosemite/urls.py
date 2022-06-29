@@ -18,5 +18,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('campsites/<id>', views.get_campings),
+    path('campsites', views.get_all_availabilities),
+    path('campsites/<id>', views.get_availabilities),
 ]
