@@ -36,5 +36,5 @@ def _format_telegram_message(campings, id):
     
     text = "⭐ *Available campsites for %s * ⭐\n\n" %  id
     for c in campings:
-        text += "%s *site:* %s - *%s*\n" % (c['date'], c['site'], c['campsite_type'])
+        text += "*%s* %s *site:* %s - %s\n" % (c['name'], c['date'], c['site'], c['campsite_type'])
     return text

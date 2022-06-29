@@ -4,6 +4,7 @@ def response_to_model(id, campsite, date, status):
         "campsite_id": id,
         "campsite_type": campsite['campsite_type'],
         "site": campsite['site'],
+        "name": campsite['loop'],
         "date": date,
         "status": status
     }
