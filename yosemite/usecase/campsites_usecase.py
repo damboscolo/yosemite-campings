@@ -24,9 +24,10 @@ def get_availabilities(campground_id):
 
     not_reserved = list(filter(lambda campsites: campsites['status'] == 'Available', all))
    
-    message = _format_telegram_message(not_reserved, campground_id)
-    telegram.send_message(message)
-    print(message)
+    message = "There is no availability for camping %s for July!" % id
+    if len(not_reserved) > 0:
+        message = _format_telegram_message(not_reserved, campground_id)
+        telegram.send_message(message)
 
     return message
 
