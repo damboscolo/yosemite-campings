@@ -2,6 +2,7 @@ from yosemite.repository import yosemite_api, telegram
 from yosemite.mappers import camping_mapper
 import os
 import json
+import datetime
 
 CAMPSITE_IDS = json.loads(os.environ.get('CAMPSITE_IDS', []))
 
@@ -20,7 +21,9 @@ def get_availabilities(campground_id):
         availabilities = campsites[campsite_id]['availabilities']
 
         for date in availabilities.keys():
-            all += [camping_mapper.response_to_model(campsite_id, campsites[campsite_id], date, availabilities[date])]
+            camping_model = camping_mapper.response_to_model(campsite_id, campsites[campsite_id], date, availabilities[date])
+            if camping_model['date'].date() >= datetime.date(2022, 7, 14) and camping_model['date'].date() <= datetime.date(2022, 7, 15):
+                all += [camping_model]
 
     not_reserved = list(filter(lambda campsites: campsites['status'] == 'Available', all))
    

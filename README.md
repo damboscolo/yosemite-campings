@@ -21,6 +21,11 @@ curl http://127.0.0.1:8000/campsites/232450
 
 ```
 
+For all campsites on CAMPSITE_ID env var
+```
+curl http://127.0.0.1:8000/campsites
+```
+
 Some Campings
 | id | name | url|
 |---|---|---|
