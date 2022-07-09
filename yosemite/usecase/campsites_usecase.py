@@ -22,14 +22,13 @@ def get_availabilities(campground_id):
 
         for date in availabilities.keys():
             camping_model = camping_mapper.response_to_model(campsite_id, campsites[campsite_id], date, availabilities[date])
-            if camping_model['date'].date() >= datetime.date(2022, 7, 14) and camping_model['date'].date() <= datetime.date(2022, 7, 15):
+            if camping_model['date'].date() >= datetime.date(2022, 7, 14) and camping_model['date'].date() <= datetime.date(2022, 7, 16):
                 all += [camping_model]
 
     not_reserved = list(filter(lambda campsites: campsites['status'] == 'Available', all))
    
-    message = "There is no availability for camping %s for July!" % id
+    message = _format_telegram_message(not_reserved, campground_id)
     if len(not_reserved) > 0:
-        message = _format_telegram_message(not_reserved, campground_id)
         telegram.send_message(message)
 
     return message
