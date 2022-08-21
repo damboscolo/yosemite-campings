@@ -8,7 +8,7 @@ ENV = os.environ.get('ENV')
 def get_availabilities(campground_id):
     if ENV != "prod": return _mock_get_availabilities()
     
-    url = "https://www.recreation.gov/api/camps/availability/campground/{0}/month?start_date=2022-07-01T00%3A00%3A00.000Z".format(campground_id)
+    url = "https://www.recreation.gov/api/camps/availability/campground/{0}/month?start_date=2022-08-01T00%3A00%3A00.000Z".format(campground_id)
     headers = {
         "authority": "www.recreation.gov",
         "referer": "https://www.recreation.gov/camping/campgrounds/232449",
