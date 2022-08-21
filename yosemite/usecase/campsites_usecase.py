@@ -35,7 +35,7 @@ def get_availabilities(campground_id):
 
 
 def _format_telegram_message(campings, id):
-    if len(campings) == 0: return "There is no availability for camping %s for July!" % id
+    if len(campings) == 0: return "There is no availability for camping %s for September!" % id
     
     text = "⭐ *Available campsites for %s * ⭐\n\n" %  id
     for c in campings:
