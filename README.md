@@ -4,9 +4,21 @@ Find available Yosemite Campings
 ### Creating new project
 https://docs.djangoproject.com/en/1.8/intro/tutorial01/
 
+## Install python on MacOs
+```bash
+brew install python3
+```
 
 ### How to Run
-```python
+
+Before run, configure:
+```bash
+pip3 install -r requirements.txt
+source .env.example
+```
+
+Then run:
+```bash
 python3 manage.py runserver
 ```
 
@@ -14,16 +26,16 @@ python3 manage.py runserver
 Call endpoint passing the campsite id
 
 Example:
-```
-curl http://127.0.0.1:8000/campsites/232449
-curl http://127.0.0.1:8000/campsites/232447
-curl http://127.0.0.1:8000/campsites/232450
+```bash
+curl http://127.0.0.1:8000/campsites/232449?start_date=2022-07-01
+curl http://127.0.0.1:8000/campsites/232447?start_date=2022-08-01
+curl http://127.0.0.1:8000/campsites/232450?start_date=2022-09-01
 
 ```
 
 For all campsites on CAMPSITE_ID env var
-```
-curl http://127.0.0.1:8000/campsites
+```bash
+curl http://127.0.0.1:8000/campsites?start_date=2022-08-01
 ```
 
 Some Campings
