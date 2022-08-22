@@ -4,9 +4,11 @@ import json
 
 
 def get_all_availabilities(request):
-    response = campsites_usecase.get_all_availabilities()
+    start_date = request.GET['start_date']
+    response = campsites_usecase.get_all_availabilities(start_date)
     return HttpResponse(response, status = 200)
 
 def get_availabilities(request, id):
-    response = campsites_usecase.get_availabilities(id)
+    start_date = request.GET['start_date']
+    response = campsites_usecase.get_availabilities(id, start_date)
     return HttpResponse(response, status = 200)
